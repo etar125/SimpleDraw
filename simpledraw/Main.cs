@@ -1,10 +1,11 @@
 ﻿// Created by etar125 in SharpDevelop 5.1
 using System;
-using SimpleDraw.Objects.Default;
-using SimpleDraw.Objects.Visual;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using SimpleDraw.Objects.Default;
+using SimpleDraw.Objects.Visual;
+using SimpleDraw.Tools.Camera;
 
 namespace SimpleDraw.Drawing
 {
@@ -66,6 +67,11 @@ namespace SimpleDraw.Drawing
 				{
 					PixelPicture g = (PixelPicture)o;
 					a.DrawImage(Zoom(g.Image, g.newSize), g.Location);
+				}
+				else if(o is Camera)
+				{
+					Camera g = (Camera)o;
+					a.DrawRectangle(g.Pen, new Rectangle(g.Location, g.Size));
 				}
 			}
 			ClearQueue();
