@@ -48,6 +48,7 @@
     <Compile Include="Objects\Default\Ellipse.cs" />
     <Compile Include="Objects\Default\Line.cs" />
     <Compile Include="Objects\Visual\Picture.cs" />
+    <Compile Include="Objects\Visual\PixelPicture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
