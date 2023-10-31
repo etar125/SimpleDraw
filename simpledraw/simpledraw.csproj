@@ -44,6 +44,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Objects\Extra\Text.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Objects\Default\Box.cs" />
     <Compile Include="Objects\Default\Ellipse.cs" />
@@ -58,6 +59,7 @@
     <Folder Include="Objects\Default" />
     <Folder Include="Objects\Visual" />
     <Folder Include="Tools" />
+    <Folder Include="Objects\Extra" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

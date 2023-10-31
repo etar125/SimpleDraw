@@ -39,7 +39,75 @@ namespace SimpleDraw.Tools.Camera
 				if(o.Location.X < Location.X + Size.Width && o.Location.Y < Location.Y + Size.Height)
 					return true;
 			}
-			throw new Exception("Unkown object type");
+			else if(obj is Ellipse)
+			{
+				Ellipse o = (Ellipse)obj;
+				if(o.Location.X < Location.X && o.Location.Y < Location.Y)
+				{
+					if(o.Location.X + o.Size.Width < Location.X && o.Location.Y + o.Size.Height < Location.Y)
+						return false;
+					if(o.Location.X + o.Size.Width < Location.X + Size.Width && o.Location.Y + o.Size.Height < Location.Y + Size.Height)
+						return true;
+					if(o.Location.X + o.Size.Width > Location.X + Size.Width && o.Location.Y + o.Size.Height > Location.Y + Size.Height)
+						return true;
+					return false;
+				}
+				if(o.Location.X < Location.X + Size.Width && o.Location.Y < Location.Y + Size.Height)
+					return true;
+			}
+			else if(obj is Picture)
+			{
+				Picture o = (Picture)obj;
+				if(o.Location.X < Location.X && o.Location.Y < Location.Y)
+				{
+					if(o.Location.X + o.Image.Size.Width < Location.X && o.Location.Y + o.Image.Size.Height < Location.Y)
+						return false;
+					if(o.Location.X + o.Image.Size.Width < Location.X + Size.Width && o.Location.Y + o.Image.Size.Height < Location.Y + Size.Height)
+						return true;
+					if(o.Location.X + o.Image.Size.Width > Location.X + Size.Width && o.Location.Y + o.Image.Size.Height > Location.Y + Size.Height)
+						return true;
+					return false;
+				}
+				if(o.Location.X < Location.X + Size.Width && o.Location.Y < Location.Y + Size.Height)
+					return true;
+			}
+			else if(obj is PixelPicture)
+			{
+				PixelPicture o = (PixelPicture)obj;
+				if(o.Location.X < Location.X && o.Location.Y < Location.Y)
+				{
+					if(o.Location.X + o.newSize.Width < Location.X && o.Location.Y + o.newSize.Height < Location.Y)
+						return false;
+					if(o.Location.X + o.newSize.Width < Location.X + Size.Width && o.Location.Y + o.newSize.Height < Location.Y + Size.Height)
+						return true;
+					if(o.Location.X + o.newSize.Width > Location.X + Size.Width && o.Location.Y + o.newSize.Height > Location.Y + Size.Height)
+						return true;
+					return false;
+				}
+				if(o.Location.X < Location.X + Size.Width && o.Location.Y < Location.Y + Size.Height)
+					return true;
+			}
+			else if(obj is Line)
+			{
+				Line o = (Line)obj;
+				if(o.Point1.X < Location.X && o.Point1.Y < Location.Y)
+				{
+					if(o.Point2.X > Location.X && o.Point2.Y > Location.Y)
+						return true;
+					return false;
+				}
+				if(o.Point1.X < Location.X + Size.Width && o.Point1.Y < Location.Y + Size.Height)
+					return true;
+				if(o.Point2.X < Location.X && o.Point2.Y < Location.Y)
+				{
+					if(o.Point1.X > Location.X && o.Point1.Y > Location.Y)
+						return true;
+					return false;
+				}
+				if(o.Point2.X < Location.X + Size.Width && o.Point2.Y < Location.Y + Size.Height)
+					return true;
+			}
+			return false;
 		}
 	}
 }

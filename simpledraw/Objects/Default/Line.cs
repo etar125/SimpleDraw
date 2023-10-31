@@ -7,12 +7,12 @@ namespace SimpleDraw.Objects.Default
 	public class Line
 	{
 		public Pen Pen;
-		public PointF Point1;
-		public PointF Point2;
+		public Point Point1;
+		public Point Point2;
 		
 		public Line() { }
 		
-		public Line(Pen pen, PointF point1, PointF point2)
+		public Line(Pen pen, Point point1, Point point2)
 		{
 			Pen = pen;
 			Point1 = point1;
