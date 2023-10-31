@@ -19,8 +19,8 @@ namespace simpledraw.Drawing
 		
 		public void CreateBuffer(Form f)
 		{
-			Bitmap bmp = new Bitmap(f.Width, f.Height, System.Drawing.Imaging.PixelFormat.Format32bppRgb);
-			Graphics a = Graphics.FromImage(bmp);
+			Buffer = new Bitmap(f.Width, f.Height, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+			Graphics a = Graphics.FromImage(Buffer);
 			foreach(object o in queue)
 			{
 				if(o is Box)
@@ -46,19 +46,14 @@ namespace simpledraw.Drawing
 				}
 			}
 			ClearQueue();
-			Buffer = bmp;
 		}
-		public void ClearBuffer(Form f) { Buffer = new Bitmap(f.Width, f.Height, System.Drawing.Imaging.PixelFormat.Format32bppRgb); }
+		public void ClearBuffer(Form f) { Buffer = new Bitmap(f.Width, f.Height, System.Drawing.Imaging.PixelFormat.Format32bppArgb); }
 		public void ClearQueue() { queue.Clear(); }
 		
 		public void Request(Form f)
 		{
-			Bitmap bmp = new Bitmap(f.Width, f.Height, System.Drawing.Imaging.PixelFormat.Format32bppRgb);
-			Graphics a = Graphics.FromImage(bmp);
-			if(Buffer != null)
-				a.DrawImage(Buffer, new Point(0, 0));
-			f.BackgroundImageLayout = ImageLayout.None;
-			f.BackgroundImage = bmp;
+			f.Controls.Add(new PictureBox() { Image = Buffer, Location = new Point(0, 0), Size = Buffer.Size, BackColor = Color.Transparent });
+			ClearBuffer(f);
 		}
 	}
 }
