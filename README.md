@@ -16,7 +16,7 @@ main.queue.Add(new Ellipse(new Point(4, 4), new Size(16, 16), Pens.Pink, Brushes
 main.CreateBuffer(this); // Отрисовываем в буфер
 main.Request(this); // Отрисовываем буфер
 ```
-Если вы сделали всё правильно, у вас должно получиться так: 
+Если вы сделали всё правильно, у вас должно получиться так:  
 ![image](https://github.com/etar125/SimpleDraw/assets/116297277/65a1d976-a316-4b63-b04b-279ba8d79123)
 
 *Написано для версии 0.02*
