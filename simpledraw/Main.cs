@@ -1,11 +1,12 @@
 ﻿// Created by etar125 in SharpDevelop 5.1
 using System;
-using simpledraw.Objects.Default;
+using SimpleDraw.Objects.Default;
+using SimpleDraw.Objects.Visual;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace simpledraw.Drawing
+namespace SimpleDraw.Drawing
 {
 	public class SimpleDrawing
 	{
@@ -16,6 +17,18 @@ namespace simpledraw.Drawing
 			
 		};
 		public Bitmap Buffer;
+		
+		public Bitmap Zoom(Image bmp, Size size)
+        {
+            var result = new Bitmap(size.Width, size.Height);
+            using(var gr = Graphics.FromImage(result))
+            {
+                gr.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
+                gr.DrawImage(bmp, 0, 0, size.Width, size.Height);
+            }
+ 
+            return result;
+        }
 		
 		public void CreateBuffer(Form f)
 		{
@@ -43,6 +56,16 @@ namespace simpledraw.Drawing
 				{
 					Line g = (Line)o;
 					a.DrawLine(g.Pen, g.Point1, g.Point2);
+				}
+				else if(o is Picture)
+				{
+					Picture g = (Picture)o;
+					a.DrawImage(g.Image, g.Location);
+				}
+				else if(o is PixelPicture)
+				{
+					PixelPicture g = (PixelPicture)o;
+					a.DrawImage(Zoom(g.Image, g.newSize), g.Location);
 				}
 			}
 			ClearQueue();

@@ -2,7 +2,7 @@
 using System;
 using System.Drawing;
 
-namespace simpledraw.Objects.Visual
+namespace SimpleDraw.Objects.Visual
 {
 	public class Picture
 	{

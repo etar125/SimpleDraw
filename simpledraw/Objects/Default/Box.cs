@@ -2,7 +2,7 @@
 using System;
 using System.Drawing;
 
-namespace simpledraw.Objects.Default
+namespace SimpleDraw.Objects.Default
 {
 	public class Box
 	{
