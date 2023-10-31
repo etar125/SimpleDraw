@@ -47,11 +47,13 @@
     <Compile Include="Objects\Default\Box.cs" />
     <Compile Include="Objects\Default\Ellipse.cs" />
     <Compile Include="Objects\Default\Line.cs" />
+    <Compile Include="Objects\Visual\Picture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Objects" />
     <Folder Include="Objects\Default" />
+    <Folder Include="Objects\Visual" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

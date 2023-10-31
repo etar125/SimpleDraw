@@ -10,7 +10,7 @@ namespace simpledraw.Objects.Default
 		public Size Size;
 		public Pen Pen;
 		public Brush Brush;
-		public bool Filled;
+		public bool Filled = false;
 		
 		public Box() { }
 		
