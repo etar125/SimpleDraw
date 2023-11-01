@@ -9,11 +9,11 @@ namespace SimpleDraw.Objects.Extra
 		public string Data;
 		public Font Font;
 		public Brush Brush;
-		public PointF Location;
+		public Point Location;
 		
 		public Text() { }
 		
-		public Text(string data, Font font, Brush brush, PointF location)
+		public Text(string data, Font font, Brush brush, Point location)
 		{
 			Data = data;
 			Font = font;

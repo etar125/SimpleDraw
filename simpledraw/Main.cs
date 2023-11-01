@@ -74,7 +74,7 @@ namespace SimpleDraw.Drawing
 				else if(o is Text)
 				{
 					Text g = (Text)o;
-					a.DrawString(g.Data, g.Font, g.Brush, g.Location.X, g.Location.Y);
+					a.DrawString(g.Data, g.Font, g.Brush, g.Location);
 				}
 			}
 			ClearQueue();
@@ -83,6 +83,7 @@ namespace SimpleDraw.Drawing
 		public void ClearQueue() { queue.Clear(); }
 		
 		public List<PictureBox> stack = new List<PictureBox> { };
+		public List<Label> fordel1 = new List<Label> { };
 		
 		public void Request(Form f)
 		{
@@ -91,7 +92,7 @@ namespace SimpleDraw.Drawing
 				f.Controls.Remove(stack[0]);
 				stack.RemoveAt(0);
 			}
-			PictureBox a = new PictureBox() { Image = Buffer, Location = new Point(0, 0), Size = Buffer.Size, BackColor = Color.Transparent };
+			PictureBox a = new PictureBox() { Image = Buffer, Location = new Point(0, 0), Size = Buffer.Size, BackColor = Color.Transparent, Parent = f };
 			f.Controls.Add(a);
 			stack.Add(a);
 			ClearBuffer(f);
