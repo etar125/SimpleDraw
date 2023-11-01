@@ -14,10 +14,7 @@ namespace SimpleDraw.Drawing
 	{
 		public SimpleDrawing() { }
 		
-		public List<object> queue = new List<object>
-		{
-			
-		};
+		public List<object> queue = new List<object> { };
 		public Bitmap Buffer;
 		
 		public Bitmap Zoom(Image bmp, Size size)
@@ -85,9 +82,18 @@ namespace SimpleDraw.Drawing
 		public void ClearBuffer(Form f) { Buffer = new Bitmap(f.Width, f.Height, System.Drawing.Imaging.PixelFormat.Format32bppArgb); }
 		public void ClearQueue() { queue.Clear(); }
 		
+		public List<PictureBox> stack = new List<PictureBox> { };
+		
 		public void Request(Form f)
 		{
-			f.Controls.Add(new PictureBox() { Image = Buffer, Location = new Point(0, 0), Size = Buffer.Size, BackColor = Color.Transparent });
+			if(stack.Count == 8)
+			{
+				f.Controls.Remove(stack[0]);
+				stack.RemoveAt(0);
+			}
+			PictureBox a = new PictureBox() { Image = Buffer, Location = new Point(0, 0), Size = Buffer.Size, BackColor = Color.Transparent };
+			f.Controls.Add(a);
+			stack.Add(a);
 			ClearBuffer(f);
 		}
 	}
