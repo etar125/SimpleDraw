@@ -76,6 +76,13 @@ namespace SimpleDraw.Drawing
 					Text g = (Text)o;
 					a.DrawString(g.Data, g.Font, g.Brush, g.Location);
 				}
+				else if(o is Polygon)
+				{
+					Polygon g = (Polygon)o;
+					a.DrawPolygon(g.Pen, g.Points);
+					if(g.Filled)
+						a.FillPolygon(g.Brush, g.Points);
+				}
 			}
 			ClearQueue();
 		}

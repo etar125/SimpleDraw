@@ -44,6 +44,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Objects\Extra\Path.cs" />
     <Compile Include="Objects\Extra\Text.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Objects\Default\Box.cs" />
