@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using SimpleDraw.Objects.Default;
 using SimpleDraw.Objects.Visual;
+using SimpleDraw.Objects.Extra;
 using SimpleDraw.Tools.Camera;
 
 namespace SimpleDraw.Drawing
@@ -72,6 +73,11 @@ namespace SimpleDraw.Drawing
 				{
 					Camera g = (Camera)o;
 					a.DrawRectangle(g.Pen, new Rectangle(g.Location, g.Size));
+				}
+				else if(o is Text)
+				{
+					Text g = (Text)o;
+					a.DrawString(g.Data, g.Font, g.Brush, g.Location.X, g.Location.Y);
 				}
 			}
 			ClearQueue();
