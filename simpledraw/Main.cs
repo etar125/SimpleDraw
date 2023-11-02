@@ -6,7 +6,7 @@ using System.Windows.Forms;
 using SimpleDraw.Objects.Default;
 using SimpleDraw.Objects.Visual;
 using SimpleDraw.Objects.Extra;
-using SimpleDraw.Tools.Camera;
+using SimpleDraw.Tools;
 
 namespace SimpleDraw.Drawing
 {

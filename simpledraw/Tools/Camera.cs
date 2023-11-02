@@ -4,7 +4,7 @@ using System.Drawing;
 using SimpleDraw.Objects.Default;
 using SimpleDraw.Objects.Visual;
 
-namespace SimpleDraw.Tools.Camera
+namespace SimpleDraw.Tools
 {
 	public class Camera
 	{
