@@ -30,13 +30,15 @@ namespace SimpleDraw.Tools
 		public void Show(int ms)
 		{
 			System.Timers.Timer a = new System.Timers.Timer();
-			a.Interval = ms;
+            System.Windows.Forms.Timer ontop = new System.Windows.Forms.Timer();
+            a.Interval = ms;
 			a.Elapsed += (object s, System.Timers.ElapsedEventArgs e) =>
 			{
 				Form.Controls.Remove(contr);
-				a.Dispose();
+                ontop.Stop();
+                ontop.Dispose();
+                a.Dispose();
 			};
-            System.Windows.Forms.Timer ontop = new System.Windows.Forms.Timer();
             ontop.Interval = 10;
             ontop.Tick += (object se, EventArgs e) =>
             {
@@ -44,6 +46,8 @@ namespace SimpleDraw.Tools
                     if (s != contr)
                         s.SendToBack();
             };
+            ontop.Enabled = true;
+            ontop.Start();
 			Form.Controls.Add(contr);
 			a.Start();
 		}
