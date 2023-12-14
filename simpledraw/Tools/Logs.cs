@@ -15,7 +15,7 @@ namespace SimpleDraw.Tools
 		
 		public Logs() { }
 		
-		public Logs(string[] Text, Font Font, Form Form)
+		public Logs(string[] Text, Font Font, Color clr, Form Form)
 		{
 			this.Data = Text;
 			this.Font = Font;
@@ -25,6 +25,7 @@ namespace SimpleDraw.Tools
 			contr.ForeColor = Color.White;
 			contr.AutoSize = true;
 			contr.Location = new Point(0, 0);
+            contr.ForeColor = clr;
 		}
 		
 		public void Show(int ms)
