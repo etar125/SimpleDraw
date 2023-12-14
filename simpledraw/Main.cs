@@ -39,7 +39,6 @@ namespace SimpleDraw.Drawing
 				{
 					Box g = (Box)o;
 					Rectangle k = new Rectangle(new Point(0, 0), g.Size);
-                    //a.TranslateTransform(g.Size.Width + g.Location.X, g.Size.Height + g.Location.Y);
                     a.TranslateTransform(g.Location.X, g.Location.Y);
                     a.RotateTransform(g.Angle);
 					a.DrawRectangle(g.Pen, k);
@@ -51,7 +50,7 @@ namespace SimpleDraw.Drawing
 				{
 					Ellipse g = (Ellipse)o;
                     Rectangle k = new Rectangle(new Point(0, 0), g.Size);
-                    a.TranslateTransform(g.Size.Width + g.Location.X, g.Size.Height + g.Location.Y);
+                    a.TranslateTransform(g.Location.X, g.Location.Y);
                     a.RotateTransform(g.Angle);
                     a.DrawRectangle(g.Pen, k);
                     if (g.Filled)
@@ -66,7 +65,7 @@ namespace SimpleDraw.Drawing
 				else if(o is Picture)
 				{
 					Picture g = (Picture)o;
-                    a.TranslateTransform(g.Image.Size.Width + g.Location.X, g.Image.Size.Height + g.Location.Y);
+                    a.TranslateTransform(g.Location.X, g.Location.Y);
                     a.RotateTransform(g.Angle);
                     a.DrawImage(g.Image, new Point(0, 0));
                     a.ResetTransform();
@@ -74,9 +73,9 @@ namespace SimpleDraw.Drawing
 				else if(o is PixelPicture)
 				{
 					PixelPicture g = (PixelPicture)o;
-                    a.TranslateTransform(g.Image.Size.Width + g.Location.X, g.Image.Size.Height + g.Location.Y);
+                    a.TranslateTransform(g.Location.X, g.Location.Y);
                     a.RotateTransform(g.Angle);
-                    a.DrawImage(Zoom(g.Image, g.newSize), g.Location);
+                    a.DrawImage(Zoom(g.Image, g.newSize), new Point(0, 0));
                     a.ResetTransform();
                 }
 				else if(o is Camera)
@@ -87,8 +86,11 @@ namespace SimpleDraw.Drawing
 				else if(o is Text)
 				{
 					Text g = (Text)o;
-					a.DrawString(g.Data, g.Font, g.Brush, g.Location);
-				}
+                    a.TranslateTransform(g.Location.X, g.Location.Y);
+                    a.RotateTransform(g.Angle);
+                    a.DrawString(g.Data, g.Font, g.Brush, new Point(0, 0));
+                    a.ResetTransform();
+                }
 				else if(o is Polygon)
 				{
 					Polygon g = (Polygon)o;
