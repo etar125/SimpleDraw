@@ -15,9 +15,9 @@ namespace SimpleDraw.Tools
 		
 		public Logs() { }
 		
-		public Logs(string[] Data, Font Font, Form Form)
+		public Logs(string[] Text, Font Font, Form Form)
 		{
-			this.Data = Data;
+			this.Data = Text;
 			this.Font = Font;
 			this.Form = Form;
 			contr.Font = Font;
@@ -36,6 +36,14 @@ namespace SimpleDraw.Tools
 				Form.Controls.Remove(contr);
 				a.Dispose();
 			};
+            System.Windows.Forms.Timer ontop = new System.Windows.Forms.Timer();
+            ontop.Interval = 10;
+            ontop.Tick += (object se, EventArgs e) =>
+            {
+                foreach (Control s in Form.Controls)
+                    if (s != contr)
+                        s.SendToBack();
+            };
 			Form.Controls.Add(contr);
 			a.Start();
 		}
