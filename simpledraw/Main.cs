@@ -39,9 +39,11 @@ namespace SimpleDraw.Drawing
 				{
 					Box g = (Box)o;
 					Rectangle k = new Rectangle(g.Location, g.Size);
+                    a.RotateTransform(g.Angle);
 					a.DrawRectangle(g.Pen, k);
 					if(g.Filled)
 						a.FillRectangle(g.Brush, k);
+                    a.ResetTransform();
 				}
 				else if(o is Ellipse)
 				{

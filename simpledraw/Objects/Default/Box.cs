@@ -11,16 +11,18 @@ namespace SimpleDraw.Objects.Default
 		public Pen Pen;
 		public Brush Brush;
 		public bool Filled = false;
+        public float Angle;
 		
 		public Box() { }
 		
-		public Box(Point location, Size size, Pen pen, Brush brush, bool filled)
+		public Box(Point location, Size size, Pen pen, Brush brush, bool filled, float angle)
 		{
 			Location = location;
 			Size = size;
 			Pen = pen;
 			Brush = brush;
 			Filled = filled;
+            Angle = angle;
 		}
 	}
 }
