@@ -38,7 +38,8 @@ namespace SimpleDraw.Drawing
 				if(o is Box)
 				{
 					Box g = (Box)o;
-					Rectangle k = new Rectangle(g.Location, g.Size);
+					Rectangle k = new Rectangle(new Point(0, 0), g.Size);
+                    a.TranslateTransform(g.Size.Width + g.Location.X, g.Size.Height + g.Location.Y);
                     a.RotateTransform(g.Angle);
 					a.DrawRectangle(g.Pen, k);
 					if(g.Filled)
