@@ -9,14 +9,16 @@ namespace SimpleDraw.Objects.Visual
 		public Point Location;
 		public Image Image;
 		public Size newSize;
+        public float Angle;
 		
 		public PixelPicture() { }
 		
-		public PixelPicture(Point location, Image image, Size newsize)
+		public PixelPicture(Point location, Image image, Size newsize, float angle)
 		{
 			Location = location;
 			Image = image;
 			newSize = newsize;
+            Angle = angle;
 		}
 	}
 }

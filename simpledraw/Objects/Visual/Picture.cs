@@ -8,13 +8,15 @@ namespace SimpleDraw.Objects.Visual
 	{
 		public Point Location;
 		public Image Image;
+        public float Angle;
 		
 		public Picture() { }
 		
-		public Picture(Point location, Image image)
+		public Picture(Point location, Image image, float angle)
 		{
 			Location = location;
 			Image = image;
+            Angle = angle;
 		}
 	}
 }

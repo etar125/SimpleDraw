@@ -39,7 +39,8 @@ namespace SimpleDraw.Drawing
 				{
 					Box g = (Box)o;
 					Rectangle k = new Rectangle(new Point(0, 0), g.Size);
-                    a.TranslateTransform(g.Size.Width + g.Location.X, g.Size.Height + g.Location.Y);
+                    //a.TranslateTransform(g.Size.Width + g.Location.X, g.Size.Height + g.Location.Y);
+                    a.TranslateTransform(g.Location.X, g.Location.Y);
                     a.RotateTransform(g.Angle);
 					a.DrawRectangle(g.Pen, k);
 					if(g.Filled)
@@ -49,11 +50,14 @@ namespace SimpleDraw.Drawing
 				else if(o is Ellipse)
 				{
 					Ellipse g = (Ellipse)o;
-					Rectangle k = new Rectangle(g.Location, g.Size);
-					a.DrawEllipse(g.Pen, k);
-					if(g.Filled)
-						a.FillEllipse(g.Brush, k);
-				}
+                    Rectangle k = new Rectangle(new Point(0, 0), g.Size);
+                    a.TranslateTransform(g.Size.Width + g.Location.X, g.Size.Height + g.Location.Y);
+                    a.RotateTransform(g.Angle);
+                    a.DrawRectangle(g.Pen, k);
+                    if (g.Filled)
+                        a.FillEllipse(g.Brush, k);
+                    a.ResetTransform();
+                }
 				else if(o is Line)
 				{
 					Line g = (Line)o;
@@ -62,13 +66,19 @@ namespace SimpleDraw.Drawing
 				else if(o is Picture)
 				{
 					Picture g = (Picture)o;
-					a.DrawImage(g.Image, g.Location);
-				}
+                    a.TranslateTransform(g.Image.Size.Width + g.Location.X, g.Image.Size.Height + g.Location.Y);
+                    a.RotateTransform(g.Angle);
+                    a.DrawImage(g.Image, new Point(0, 0));
+                    a.ResetTransform();
+                }
 				else if(o is PixelPicture)
 				{
 					PixelPicture g = (PixelPicture)o;
-					a.DrawImage(Zoom(g.Image, g.newSize), g.Location);
-				}
+                    a.TranslateTransform(g.Image.Size.Width + g.Location.X, g.Image.Size.Height + g.Location.Y);
+                    a.RotateTransform(g.Angle);
+                    a.DrawImage(Zoom(g.Image, g.newSize), g.Location);
+                    a.ResetTransform();
+                }
 				else if(o is Camera)
 				{
 					Camera g = (Camera)o;

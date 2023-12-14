@@ -10,15 +10,17 @@ namespace SimpleDraw.Objects.Extra
 		public Pen Pen;
 		public Brush Brush;
 		public bool Filled = false;
+        public float Angle;
 		
 		public Polygon() { }
 		
-		public Polygon(Point[] points, Pen pen, Brush brush, bool filled)
+		public Polygon(Point[] points, Pen pen, Brush brush, bool filled, float angle)
 		{
 			Points = points;
 			Pen = pen;
 			Brush = brush;
 			Filled = filled;
+            Angle = angle;
 		}
 	}
 }

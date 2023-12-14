@@ -10,15 +10,17 @@ namespace SimpleDraw.Objects.Extra
 		public Font Font;
 		public Brush Brush;
 		public Point Location;
+        public float Angle;
 		
 		public Text() { }
 		
-		public Text(string data, Font font, Brush brush, Point location)
+		public Text(string data, Font font, Brush brush, Point location, float angle)
 		{
 			Data = data;
 			Font = font;
 			Brush = brush;
 			Location = location;
+            Angle = angle;
 		}
 	}
 }
